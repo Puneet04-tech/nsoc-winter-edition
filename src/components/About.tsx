@@ -27,9 +27,9 @@ export const About = () => {
         ].map((stat, i) => (
           <div
             key={i}
-            className="bg-card p-6 rounded-[24px] border border-border shadow-[6px_6px_0px_0px_rgba(255,255,255,0.15)] flex flex-col items-center text-center hover:translate-y-[-2px] transition-transform"
+            className="bg-card p-6 rounded-[24px] border border-border transition-all shadow-[6px_6px_0px_0px_rgba(255,255,255,0.15)] flex flex-col items-center text-center hover-glow hover:translate-y-[-2px] transition-all"
           >
-            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 bg-background text-primary rounded-full border border-border mb-3">
+            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 bg-background text-primary rounded-full border border-border transition-all mb-3">
               {stat.badge}
             </span>
             <div className="text-3xl md:text-4xl font-extrabold text-primary mb-1">
@@ -41,7 +41,7 @@ export const About = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-card p-8 rounded-[24px] border border-border shadow-[6px_6px_0px_0px_#00a4ef]">
+        <div className="bg-card p-8 rounded-[24px] border border-border transition-all shadow-[6px_6px_0px_0px_#00a4ef]">
           <div className="text-2xl mb-3">🎯</div>
           <h3 className="text-xl font-bold text-foreground mb-2">What We Do</h3>
           <p className="text-sm text-[#94a3b8] leading-relaxed">
@@ -49,7 +49,7 @@ export const About = () => {
           </p>
         </div>
 
-        <div className="bg-card p-8 rounded-[24px] border border-border shadow-[6px_6px_0px_0px_white]">
+        <div className="bg-card p-8 rounded-[24px] border border-border transition-all shadow-[6px_6px_0px_0px_white]">
           <div className="text-2xl mb-3">👥</div>
           <h3 className="text-xl font-bold text-foreground mb-2">Who It Is For</h3>
           <p className="text-sm text-[#94a3b8] leading-relaxed">
@@ -57,7 +57,7 @@ export const About = () => {
           </p>
         </div>
 
-        <div className="bg-card p-8 rounded-[24px] border border-border shadow-[6px_6px_0px_0px_#00a4ef]">
+        <div className="bg-card p-8 rounded-[24px] border border-border transition-all shadow-[6px_6px_0px_0px_#00a4ef]">
           <div className="text-2xl mb-3">❄️</div>
           <h3 className="text-xl font-bold text-foreground mb-2">Upcoming Season</h3>
           <p className="text-sm text-[#94a3b8] leading-relaxed">
