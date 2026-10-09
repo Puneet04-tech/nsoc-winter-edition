@@ -1,30 +1,38 @@
+"use client";
 import React from 'react';
 import { sponsorsList } from '../data/nsoc-data';
 
 export const Sponsors = () => {
   return (
-    <section className="py-24 px-6 max-w-5xl mx-auto text-center">
-      <span className="inline-block px-4 py-1 text-xs font-bold uppercase tracking-wider text-primary bg-card border border-[#00a4ef] rounded-full shadow-[2px_2px_0px_0px_#00a4ef] mb-4">
-        Ecosystem Partners
-      </span>
-      <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
-        Supported By Industry Leaders
-      </h2>
-      <p className="text-[#94a3b8] text-base mb-12">Organizations powering the student open source revolution</p>
+    <section className="py-24 px-4 md:px-8 max-w-5xl mx-auto">
+      <div className="text-center mb-16">
+        <div className="inline-block px-5 py-1.5 text-xs font-black uppercase tracking-widest text-[#00a4ef] bg-[#0b1221] border border-[#00a4ef] rounded-full shadow-[0_0_15px_rgba(0,164,239,0.3)] mb-4">
+          OUR PARTNERS
+        </div>
+        <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase">
+          Supported By
+        </h2>
+        <p className="mt-4 text-base text-slate-300 max-w-2xl mx-auto">
+          Backed by leading developer toolchains, companies, and global open source communities.
+        </p>
+      </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {sponsorsList.map(sponsor => (
-          <div
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        {sponsorsList.map((sponsor) => (
+          <a
             key={sponsor.id}
-            className="bg-card p-6 rounded-[24px] border border-border shadow-[6px_6px_0px_0px_rgba(255,255,255,0.15)] flex flex-col items-center justify-center hover:border-[#00a4ef] hover:translate-y-[-2px] transition-all"
+            href={sponsor.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mstc-card p-6 flex flex-col items-center justify-center text-center group cursor-pointer"
           >
-            <div className="text-xl font-black tracking-tight text-foreground mb-1">
+            <div className="text-2xl font-black text-white tracking-tight group-hover:text-[#00a4ef] transition-colors">
               {sponsor.name}
             </div>
-            <span className="text-[9px] uppercase font-bold text-primary tracking-widest">
-              {sponsor.tier} Partner
+            <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-2 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10">
+              {sponsor.tier}
             </span>
-          </div>
+          </a>
         ))}
       </div>
     </section>

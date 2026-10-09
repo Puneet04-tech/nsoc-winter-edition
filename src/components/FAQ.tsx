@@ -1,32 +1,47 @@
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 import { faqList } from '../data/nsoc-data';
+import { ChevronDown } from 'lucide-react';
 
 export const FAQ = () => {
+  const [openId, setOpenId] = useState<string | null>("q1");
+
   return (
-    <section id="faq" className="py-24 px-6 max-w-4xl mx-auto">
+    <section id="faq" className="py-24 px-4 md:px-8 max-w-4xl mx-auto">
       <div className="text-center mb-16">
-        <span className="inline-block px-4 py-1 text-xs font-bold uppercase tracking-wider text-primary bg-card border border-[#00a4ef] rounded-full shadow-[2px_2px_0px_0px_#00a4ef] mb-4">
-          Got Questions?
-        </span>
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
+        <div className="inline-block px-5 py-1.5 text-xs font-black uppercase tracking-widest text-[#00a4ef] bg-[#0b1221] border border-[#00a4ef] rounded-full shadow-[0_0_15px_rgba(0,164,239,0.3)] mb-4">
+          QUESTIONS & ANSWERS
+        </div>
+        <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase">
           Frequently Asked Questions
         </h2>
-        <p className="text-[#94a3b8] text-base">Everything you need to know before contributing</p>
       </div>
 
       <div className="space-y-6">
-        {faqList.map(faq => (
-          <div
-            key={faq.id}
-            className="bg-card p-6 md:p-8 rounded-[24px] border border-border shadow-[6px_6px_0px_0px_rgba(255,255,255,0.15)] hover:border-[#00a4ef] transition-colors"
-          >
-            <h3 className="text-lg font-bold text-foreground mb-2 flex items-center gap-3">
-              <span className="text-primary">❄</span>
-              {faq.question}
-            </h3>
-            <p className="text-sm text-[#94a3b8] leading-relaxed pl-6">{faq.answer}</p>
-          </div>
-        ))}
+        {faqList.map((faq) => {
+          const isOpen = openId === faq.id;
+          return (
+            <div
+              key={faq.id}
+              className="mstc-card cursor-pointer"
+              onClick={() => setOpenId(isOpen ? null : faq.id)}
+            >
+              <div className="p-6 md:p-8 flex items-center justify-between gap-4">
+                <h3 className="text-lg md:text-xl font-extrabold text-white tracking-tight">
+                  {faq.question}
+                </h3>
+                <div className={`w-8 h-8 rounded-full bg-white/5 border border-white/20 flex items-center justify-center text-white shrink-0 transition-transform ${isOpen ? 'rotate-180 bg-[#00a4ef] text-black border-transparent' : ''}`}>
+                  <ChevronDown size={18} />
+                </div>
+              </div>
+              {isOpen && (
+                <div className="px-6 md:px-8 pb-8 pt-0 text-sm md:text-base text-slate-300 leading-relaxed font-medium border-t border-white/10 mt-2 pt-4">
+                  {faq.answer}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </section>
   );

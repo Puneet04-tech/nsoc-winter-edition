@@ -1,81 +1,75 @@
+"use client";
 import React from 'react';
+import { Gift, Award, FileText, Sparkles } from 'lucide-react';
 
 export const Perks = () => {
   const benefits = [
     {
       title: "Exclusive NSoC Swags",
-      description: "Winter hoodies, custom developer t-shirts, beanies, insulated mugs, and laptop sticker packs delivered to top performers.",
-      icon: "❄️",
-      tag: "Top Contributors",
-      recommended: true,
+      description: "High-quality winter hoodies, tees, beanies, developer kits, and stickers dispatched to top performers.",
+      icon: Gift,
+      color: "#00a4ef",
+      shadowClass: "mstc-card"
     },
     {
-      title: "Verified Certificate",
-      description: "Official digital certificate validating your open source contributions and pull request impact.",
-      icon: "📜",
-      tag: "All Active Participants",
-      recommended: false,
+      title: "Official Certificate",
+      description: "Verified certificate of completion recognizing your contributions to production open-source software.",
+      icon: Award,
+      color: "#a855f7",
+      shadowClass: "mstc-card-purple"
     },
     {
       title: "Letter of Recommendation",
-      description: "Personalized Letter of Recommendation (LOR) from project maintainers and industry mentors.",
-      icon: "🌟",
-      tag: "Standout Developers",
-      recommended: true,
+      description: "Personalized Letter of Recommendation (LOR) for top performing developers to boost internships and jobs.",
+      icon: FileText,
+      color: "#ffb900",
+      shadowClass: "mstc-card-white"
     },
     {
-      title: "Global Recognition",
-      description: "Feature on the NSoC Hall of Fame, official website leaderboard, and partner social channels.",
-      icon: "🌍",
-      tag: "Public Profile",
-      recommended: false,
+      title: "Community Recognition",
+      description: "Recognition on the official NSoC website, leaderboard, and social channels across 3,500+ developers.",
+      icon: Sparkles,
+      color: "#7fba00",
+      shadowClass: "mstc-card"
     }
   ];
 
   return (
-    <section className="py-24 px-6 max-w-6xl mx-auto">
+    <section id="perks" className="py-24 px-4 md:px-8 max-w-5xl mx-auto">
       <div className="text-center mb-16">
-        <span className="inline-block px-4 py-1 text-xs font-bold uppercase tracking-wider text-primary bg-card border border-[#00a4ef] rounded-full shadow-[2px_2px_0px_0px_#00a4ef] mb-4">
-          Incentives & Rewards
-        </span>
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
-          Benefits for Selected Developers
+        <div className="inline-block px-5 py-1.5 text-xs font-black uppercase tracking-widest text-[#00a4ef] bg-[#0b1221] border border-[#00a4ef] rounded-full shadow-[0_0_15px_rgba(0,164,239,0.3)] mb-4">
+          PERKS & REWARDS
+        </div>
+        <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase">
+          Benefits for Contributors
         </h2>
-        <p className="text-[#94a3b8] text-base">Earn recognition and tangible rewards for your merged code</p>
+        <p className="mt-4 text-base text-slate-300 max-w-2xl mx-auto">
+          Every accepted pull request is recognized, and top contributors take home winter swags, LORs, and certificates.
+        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {benefits.map((benefit, i) => (
-          <div
-            key={i}
-            className={`bg-card p-8 rounded-[32px] border transition-all flex flex-col justify-between ${
-              benefit.recommended
-                ? 'border-2 border-[#00a4ef] shadow-[8px_8px_0px_0px_#00a4ef]'
-                : 'border border-border shadow-[6px_6px_0px_0px_rgba(255,255,255,0.2)]'
-            }`}
-          >
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-4xl">{benefit.icon}</span>
-                {benefit.recommended ? (
-                  <span className="text-[10px] uppercase font-extrabold px-3 py-1 bg-primary text-primary-foreground rounded-full border border-white shadow-[2px_2px_0px_0px_#ffffff]">
-                    Recommended
-                  </span>
-                ) : (
-                  <span className="text-[10px] uppercase font-bold px-2.5 py-1 bg-background text-[#94a3b8] rounded-full border border-border">
-                    {benefit.tag}
-                  </span>
-                )}
+        {benefits.map((benefit, i) => {
+          const Icon = benefit.icon;
+          return (
+            <div key={i} className={`${benefit.shadowClass} p-8 flex items-start gap-6`}>
+              <div
+                className="w-16 h-16 rounded-2xl bg-white/5 border border-white/20 flex items-center justify-center shrink-0"
+                style={{ color: benefit.color }}
+              >
+                <Icon className="w-8 h-8" />
               </div>
-              <h3 className="text-2xl font-bold text-foreground mb-3">{benefit.title}</h3>
-              <p className="text-sm text-[#94a3b8] leading-relaxed mb-6">{benefit.description}</p>
+              <div>
+                <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight mb-2">
+                  {benefit.title}
+                </h3>
+                <p className="text-sm text-slate-300 leading-relaxed font-medium">
+                  {benefit.description}
+                </p>
+              </div>
             </div>
-            <div className="pt-4 border-t border-border flex items-center justify-between text-xs text-primary font-semibold">
-              <span>{benefit.tag}</span>
-              <span>Included →</span>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
