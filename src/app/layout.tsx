@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ThemeProvider } from '../components/ThemeProvider';
 
 export const metadata: Metadata = {
   title: "Nexus Spring of Code — Winter Edition 2026",
@@ -12,19 +13,16 @@ export const metadata: Metadata = {
     "Open Source",
     "Student Developers",
   ],
-  openGraph: {
-    title: "Nexus Spring of Code — Winter Edition 2026",
-    description:
-      "Open source program for student developers. 15 Oct – 30 Dec. Build real projects, get reviewed, earn swags & certificates.",
-    siteName: "Nexus Spring of Code",
-    locale: "en_IN",
-  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen bg-background font-sans antialiased">{children}</body>
+      <body className="min-h-screen bg-background font-sans antialiased">
+        <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
