@@ -14,7 +14,7 @@ export const ThemeToggle = () => {
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="p-2 rounded-lg bg-[#0b1221] text-[#00a4ef] border border-[#0f172a] hover:border-[#00a4ef] transition-colors"
+      className="p-2 rounded-lg bg-card text-primary border border-border hover:border-[#00a4ef] transition-colors"
       aria-label="Toggle theme"
     >
       {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
