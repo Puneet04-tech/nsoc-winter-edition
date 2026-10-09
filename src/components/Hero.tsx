@@ -3,13 +3,13 @@ import { Snowflake } from './Snowflake';
 
 export const Hero = () => {
   return (
-    <section className="relative h-screen flex flex-col items-center justify-center text-center bg-background">
-      <div className="absolute inset-0 z-0">
+    <section className="relative h-screen flex flex-col items-center justify-center text-center">
+      <div className="absolute inset-0 z-10">
         {[...Array(20)].map((_, i) => <Snowflake key={i} />)}
       </div>
       
       {/* Recommended style border/shadow wrapper */}
-      <div className="z-10 bg-card border border-border shadow-[8px_8px_0px_0px_rgb(255,255,255)] p-12 rounded-[32px] mx-6 max-w-4xl w-full flex flex-col items-center">
+      <div className="z-20 bg-card/60 backdrop-blur-sm border border-border shadow-[8px_8px_0px_0px_rgb(255,255,255)] p-12 rounded-[32px] mx-6 max-w-4xl w-full flex flex-col items-center">
         <h1 className="text-5xl md:text-7xl font-bold text-foreground font-sans tracking-tight">
           Nexus Spring of Code
         </h1>
