@@ -1,24 +1,75 @@
+import React from 'react';
 import { nsocProjects } from '../data/nsoc-data';
 
 export const Projects = () => {
   return (
-    <section id="projects" className="py-20 px-6 max-w-6xl mx-auto">
-      <h2 className="text-4xl font-bold mb-16 text-center">Featured Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {nsocProjects.map(project => (
-          <div key={project.id} className="glass p-6 rounded-2xl flex flex-col">
-            <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-            <p className="text-sm text-muted-foreground mb-4 flex-grow">{project.description}</p>
-            <div className="flex flex-wrap gap-2 mb-4">
-              {project.languages.map(lang => (
-                <span key={lang} className="text-xs bg-sky-900/50 px-2 py-1 rounded">{lang}</span>
-              ))}
+    <section id="projects" className="py-24 px-6 max-w-6xl mx-auto">
+      <div className="text-center mb-16">
+        <span className="inline-block px-4 py-1 text-xs font-bold uppercase tracking-wider text-[#00a4ef] bg-[#0b1221] border border-[#00a4ef] rounded-full shadow-[2px_2px_0px_0px_#00a4ef] mb-4">
+          Open Source Catalog
+        </span>
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-[#f0f4f8] mb-4">
+          Featured Winter Projects
+        </h2>
+        <p className="text-[#94a3b8] text-base">Real projects contributed by organizations & students</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {nsocProjects.map(project => {
+          const isBeginner = project.difficulty === 'Beginner';
+          return (
+            <div
+              key={project.id}
+              className={`bg-[#0b1221] p-6 rounded-[24px] border flex flex-col justify-between transition-all hover:translate-y-[-2px] ${
+                isBeginner
+                  ? 'border-2 border-[#00a4ef] shadow-[6px_6px_0px_0px_#00a4ef]'
+                  : 'border border-[#0f172a] shadow-[6px_6px_0px_0px_rgba(255,255,255,0.15)]'
+              }`}
+            >
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs font-semibold text-[#00a4ef]">{project.category}</span>
+                  {isBeginner ? (
+                    <span className="text-[9px] uppercase font-extrabold px-2 py-0.5 bg-[#00a4ef] text-[#000000] rounded-full border border-white shadow-[2px_2px_0px_0px_#ffffff]">
+                      Recommended
+                    </span>
+                  ) : (
+                    <span className="text-[10px] font-bold px-2 py-0.5 bg-[#000000] text-[#94a3b8] rounded-full border border-[#0f172a]">
+                      {project.difficulty}
+                    </span>
+                  )}
+                </div>
+                <h3 className="text-xl font-bold text-[#f0f4f8] mb-2">{project.title}</h3>
+                <p className="text-xs text-[#94a3b8] leading-relaxed mb-4">{project.description}</p>
+              </div>
+
+              <div>
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {project.languages.map(lang => (
+                    <span
+                      key={lang}
+                      className="text-[10px] font-mono px-2 py-0.5 bg-[#000000] text-[#f0f4f8] rounded-md border border-[#0f172a]"
+                    >
+                      {lang}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="pt-3 border-t border-[#0f172a] flex items-center justify-between text-xs">
+                  <span className="text-[#94a3b8]">{project.issuesCount} Open Issues</span>
+                  <a
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-bold text-[#00a4ef] hover:underline"
+                  >
+                    View Repo →
+                  </a>
+                </div>
+              </div>
             </div>
-            <a href={project.repoUrl} target="_blank" className="text-sky-400 font-semibold hover:underline">
-              View Repository →
-            </a>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
