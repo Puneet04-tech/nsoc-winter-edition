@@ -19,11 +19,23 @@
   --font-display: "Space Grotesk", system-ui, sans-serif;
 }
 
+[data-theme='light'] {
+  --background: 0 0% 100%;
+  --foreground: 222 47% 12%;
+  --card: 210 20% 98%;
+  --card-foreground: 222 47% 12%;
+  --border: 220 20% 88%;
+  --input: 220 20% 88%;
+  --primary: 222 65% 45%;
+  --primary-foreground: 220 40% 98%;
+  --ring: 222 65% 45%;
+}
+
 * { @apply border-border; }
 
 body {
-  background: #000000;
-  color: #f0f4f8;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
   font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -32,15 +44,15 @@ body {
 h1,h2,h3,h4,h5,h6 { font-family: var(--font-display); }
 
 .text-gradient {
-  background: linear-gradient(135deg, #00a4ef 0%, #f0f4f8 100%);
+  background: linear-gradient(135deg, #00a4ef 0%, #a78bfa 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .glass-card {
-  background: rgba(11, 18, 33, 0.65);
-  border: 1px solid rgba(245, 245, 245, 0.08);
+  background: hsl(var(--card) / 0.65);
+  border: 1px solid hsl(var(--border));
   backdrop-filter: blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);
   border-radius: 2rem;
