@@ -12,7 +12,7 @@ export const Hero = () => {
       </h1>
 
       {/* Signature Multi-Color Pill Badge from MSTC screenshot */}
-      <div className="mt-4 mb-16 inline-flex items-center gap-2 border-2 border-slate-700/80 bg-[#080d1a]/90 backdrop-blur-md px-8 py-3 rounded-full shadow-[0_0_25px_rgba(0,164,239,0.25)]">
+      <div className="mt-4 mb-16 inline-flex items-center gap-2 border-2 hero-pill border-slate-700/80 bg-[#080d1a]/90 backdrop-blur-md px-8 py-3 rounded-full shadow-[0_0_25px_rgba(0,164,239,0.25)]">
         <span className="font-extrabold text-base md:text-lg text-[#00a4ef]">
           Winter
         </span>
